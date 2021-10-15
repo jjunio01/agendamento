@@ -10,7 +10,7 @@
 </head>
 <body>
 	<main class="bananaMain">
-		<form action="efetuarCadastro" method="post" class="bananaForm">
+		<form action="RealizarCadastro" method="post" class="bananaForm">
 			
 			<div>
 				<input id="bananaButton" type="submit" name="salvar"

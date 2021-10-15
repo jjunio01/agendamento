@@ -20,7 +20,7 @@
 
 	<servlet-mapping>
 		<servlet-name>cadastrar</servlet-name>
-		<url-pattern>/cadastrar</url-pattern>
+		<url-pattern>/cadastroEfetuado</url-pattern>
 	</servlet-mapping>
 
 </web-app>

@@ -11,6 +11,7 @@ import org.hibernate.Session;
 
 import br.ifpe.edu.agendamento.model.dao.DAOPostgreSQL;
 import br.ifpe.edu.agendamento.model.entity.Person;
+import br.ifpe.edu.agendamento.model.entity.Queue;
 
 /**
  * Servlet implementation class ControllerPerson
@@ -31,13 +32,13 @@ public class ControllerPerson extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset-UTF-8");
-		System.out.println("To aqui");
+		System.out.println("Vamo lá");
 		
-		Person pessoa = new Person("123", "Teste", "000000", "carai@hotmail.com");
+		Queue fila = new Queue();
 		DAOPostgreSQL.getInstance();
 		Session session = DAOPostgreSQL.startTransaction();
-		session.save(pessoa);
-		
+		session.save(fila);
+		DAOPostgreSQL.closeTransaction(session);
 	}
 
 }

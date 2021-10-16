@@ -30,9 +30,39 @@ public class ModelPerson {
 			if (queryPerson != null) {
 				DAOPerson daoPerson = new DAOPerson();
 				daoPerson.add(person);
+				return true;
 			}
 		}
 
+		return false;
+	}
+	
+	public static boolean updatePerson(Person person) {
+		
+		if (person != null) {
+
+			Person queryPerson = readPersonCPF(person.getCpf());
+
+			if (queryPerson != null) {
+				DAOPerson daoPerson = new DAOPerson();
+				daoPerson.update(person);
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public static boolean clearPerson(String CPF) {
+		
+		Person queryPerson = readPersonCPF(CPF);
+		
+		if (queryPerson != null) {
+			DAOPerson daoPerson = new DAOPerson();
+			daoPerson.clear(queryPerson);
+			return true;
+		}
+		
 		return false;
 	}
 }

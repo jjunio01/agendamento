@@ -64,7 +64,7 @@ public class DAOAttendance extends DAOGenericImplements<Attendance> {
 		List<Attendance> attendances = null;
 		try {
 			Query consulta = session.createQuery("from Attendance");
-			attendances = consulta.getResultList();
+			attendances = (List<Attendance>) consulta.getResultList();
 		} catch (Exception err) {
 			System.out.println("erro" + err);
 		}

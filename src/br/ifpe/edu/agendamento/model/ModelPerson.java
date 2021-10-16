@@ -9,7 +9,7 @@ import br.ifpe.edu.agendamento.model.entity.Person;
  */
 public class ModelPerson {
 
-	public static Person readPersonCPF(String CPF) {
+	public static Person readPersonForCPF(String CPF) {
 
 		DAOPerson daoPerson = new DAOPerson();
 		Person person = daoPerson.readCPF(CPF);
@@ -25,7 +25,7 @@ public class ModelPerson {
 				return false;
 			}
 
-			Person queryPerson = readPersonCPF(person.getCpf());
+			Person queryPerson = readPersonForCPF(person.getCpf());
 
 			if (queryPerson != null) {
 				DAOPerson daoPerson = new DAOPerson();
@@ -36,12 +36,12 @@ public class ModelPerson {
 
 		return false;
 	}
-	
+
 	public static boolean updatePerson(Person person) {
-		
+
 		if (person != null) {
 
-			Person queryPerson = readPersonCPF(person.getCpf());
+			Person queryPerson = readPersonForCPF(person.getCpf());
 
 			if (queryPerson != null) {
 				DAOPerson daoPerson = new DAOPerson();
@@ -49,20 +49,45 @@ public class ModelPerson {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	public static boolean clearPerson(String CPF) {
-		
-		Person queryPerson = readPersonCPF(CPF);
-		
+
+		Person queryPerson = readPersonForCPF(CPF);
+
 		if (queryPerson != null) {
 			DAOPerson daoPerson = new DAOPerson();
 			daoPerson.clear(queryPerson);
 			return true;
 		}
-		
+
+		return false;
+	}
+
+	public static boolean isEmpty(Person person) {
+		if (person.getCpf().isEmpty() 
+				&& person.getEmailEddress().isEmpty() 
+				&& person.getName().isEmpty()
+				&& person.getPhoneNumber().isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean authenticatePerson(Person person) {
+
+		if (!isEmpty(person)) {
+
+			if (person.getCpf().isEmpty() 
+					&& person.getPhoneNumber().isEmpty() 
+					&& person.getName().isEmpty()) {
+				return true;
+			}
+
+		}
+
 		return false;
 	}
 }

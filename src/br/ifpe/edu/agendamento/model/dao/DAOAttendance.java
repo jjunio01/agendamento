@@ -1,5 +1,6 @@
 package br.ifpe.edu.agendamento.model.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -77,13 +78,28 @@ public class DAOAttendance extends DAOGenericImplements<Attendance> {
 		Session session = DAOPostgreSQL.startTransaction();
 		Attendance attendance = null;
 		try {
-			Query consulta = session.createQuery("from Attendance where cpf like '" + CPF + "'");
+			Query consulta = session.createQuery("from Attendance attendance JOIN Person where attendance.cpf like '" + CPF + "'");
 			attendance = (Attendance) consulta.getResultList().get(0);
 		} catch (Exception err) {
 			System.out.println("erro" + err);
 		}
 		DAOPostgreSQL.closeTransaction(session);
 		return attendance;
-
+	}
+	
+	public List<Attendance> listAllDate(Date date) {
+		List<Attendance> attendancesDate = null;
+		
+		DAOPostgreSQL.getInstance();
+		Session session = DAOPostgreSQL.startTransaction();
+		try {
+			Query consulta = session.createQuery("from Attendance ");
+			attendancesDate = (List<Attendance>) consulta.getResultList();
+		} catch (Exception err) {
+			System.out.println("erro" + err);
+		}
+		DAOPostgreSQL.closeTransaction(session);
+		
+		return attendancesDate;
 	}
 }

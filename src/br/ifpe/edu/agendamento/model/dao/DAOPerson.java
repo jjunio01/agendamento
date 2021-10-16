@@ -12,32 +12,29 @@ import br.ifpe.edu.agendamento.model.entity.Person;
  * @author JJunio
  *
  */
-public class DAOPerson implements DAOGeneric<Person> {
+public class DAOPerson extends DAOGenericImplements<Person> {
 
 	@Override
 	public boolean add(Person person) {
-		DAOPostgreSQL.getInstance();
-		Session session = DAOPostgreSQL.startTransaction();
-		try {
-			session.save(person);
+		DAOGenericImplements<Person> daoPerson = new DAOGenericImplements<>();
+		if (daoPerson.add(person))
 			return true;
-		} catch (Exception e) {
-			System.out.println("Erro ao salvar" + e);
-		}
-		DAOPostgreSQL.closeTransaction(session);
 		return false;
 	}
 
 	@Override
 	public boolean update(Person person) {
+		DAOGenericImplements<Person> daoPerson = new DAOGenericImplements<>();
+
 		DAOPostgreSQL.getInstance();
 		Session session = DAOPostgreSQL.startTransaction();
 		try {
 			Person personUpdate = readCPF(person.getCpf());
-			session.update(personUpdate);
-			return true;
+			if (daoPerson.update(personUpdate))
+				return true;
+			return false;
 		} catch (Exception e) {
-			System.out.println("Erro ao atualizar" + e);
+			System.out.println("Erro ao salvar" + e);
 		}
 		DAOPostgreSQL.closeTransaction(session);
 		return false;
@@ -45,12 +42,15 @@ public class DAOPerson implements DAOGeneric<Person> {
 
 	@Override
 	public boolean clear(Person person) {
+		DAOGenericImplements<Person> daoPerson = new DAOGenericImplements<>();
+
 		DAOPostgreSQL.getInstance();
 		Session session = DAOPostgreSQL.startTransaction();
 		try {
-			Person personUpdate = readCPF(person.getCpf());
-			session.delete(personUpdate);
-			return true;
+			Person personClear = readCPF(person.getCpf());
+			if (daoPerson.clear(personClear))
+				return true;
+			return false;
 		} catch (Exception e) {
 			System.out.println("Erro ao salvar" + e);
 		}
@@ -58,7 +58,6 @@ public class DAOPerson implements DAOGeneric<Person> {
 		return false;
 	}
 
-	@Override
 	public List<Person> listAll() {
 		DAOPostgreSQL.getInstance();
 		Session session = DAOPostgreSQL.startTransaction();

@@ -1,17 +1,16 @@
 package br.ifpe.edu.agendamento.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.Session;
-
-import br.ifpe.edu.agendamento.model.dao.DAOPostgreSQL;
+import br.ifpe.edu.agendamento.model.dao.DAOPerson;
 import br.ifpe.edu.agendamento.model.entity.Person;
-import br.ifpe.edu.agendamento.model.entity.Queue;
 
 /**
  * Servlet implementation class ControllerPerson
@@ -19,26 +18,36 @@ import br.ifpe.edu.agendamento.model.entity.Queue;
 @WebServlet("/ControllerPerson")
 public class ControllerPerson extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public ControllerPerson() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public ControllerPerson() {
+		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		this.doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset-UTF-8");
-		System.out.println("Vamo lá");
-		
-		Queue fila = new Queue();
-		DAOPostgreSQL.getInstance();
-		Session session = DAOPostgreSQL.startTransaction();
-		session.save(fila);
-		DAOPostgreSQL.closeTransaction(session);
+
+		String name = request.getParameter("name");
+		String cpf = request.getParameter("cpf");
+		String phoneNumber = request.getParameter("phoneNumber");
+		String emailEddress = request.getParameter("emailEddress");
+
+		DAOPerson daoPerson = new DAOPerson();
+		String mensagemCadastro = "Cadastro realizado com sucesso!";
+
+		if (daoPerson.add(new Person(cpf, name, phoneNumber, emailEddress)))
+			request.setAttribute("mensagem", mensagemCadastro);
+		request.setAttribute("mensagem", mensagemCadastro);
+		mensagemCadastro = "Falha ao realizar cadastro, tente novamente.";
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/createPerson.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 }

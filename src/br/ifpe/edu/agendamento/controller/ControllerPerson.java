@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.ifpe.edu.agendamento.model.ModelPerson;
 import br.ifpe.edu.agendamento.model.dao.DAOPerson;
 import br.ifpe.edu.agendamento.model.entity.Person;
 
@@ -38,10 +39,9 @@ public class ControllerPerson extends HttpServlet {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String emailEddress = request.getParameter("emailEddress");
 
-		DAOPerson daoPerson = new DAOPerson();
 		String mensagemCadastro = "Cadastro realizado com sucesso!";
 
-		if (daoPerson.add(new Person(cpf, name, phoneNumber, emailEddress)))
+		if (ModelPerson.createPerson(new Person(cpf, name, phoneNumber, emailEddress)))
 			request.setAttribute("mensagem", mensagemCadastro);
 		request.setAttribute("mensagem", mensagemCadastro);
 		mensagemCadastro = "Falha ao realizar cadastro, tente novamente.";

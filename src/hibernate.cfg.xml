@@ -16,5 +16,7 @@
 		
 		<mapping class="br.ifpe.edu.agendamento.model.entity.Queue"/>
 		<mapping class="br.ifpe.edu.agendamento.model.entity.Person"/>
+		<mapping class="br.ifpe.edu.agendamento.model.entity.Attendance"/>
+		<mapping class="br.ifpe.edu.agendamento.model.entity.Service"/>
 	</session-factory>
 </hibernate-configuration>

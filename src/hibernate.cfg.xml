@@ -14,7 +14,7 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		
-		<mapping class="br.ifpe.edu.agendamento.model.entity.Queue"/>
+		<mapping class="br.ifpe.edu.agendamento.model.entity.QueueAttendance"/>
 		<mapping class="br.ifpe.edu.agendamento.model.entity.Person"/>
 		<mapping class="br.ifpe.edu.agendamento.model.entity.Attendance"/>
 		<mapping class="br.ifpe.edu.agendamento.model.entity.Service"/>

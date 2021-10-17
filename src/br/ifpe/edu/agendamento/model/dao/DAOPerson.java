@@ -30,14 +30,13 @@ public class DAOPerson extends DAOGenericImplements<Person> {
 		Session session = DAOPostgreSQL.startTransaction();
 		try {
 			Person personUpdate = readCPF(person.getCpf());
-			if (daoPerson.update(personUpdate))
-				return true;
-			return false;
+			daoPerson.update(personUpdate);
 		} catch (Exception e) {
 			System.out.println("Erro ao salvar" + e);
+			return false;
 		}
 		DAOPostgreSQL.closeTransaction(session);
-		return false;
+		return true;
 	}
 
 	@Override
@@ -48,14 +47,13 @@ public class DAOPerson extends DAOGenericImplements<Person> {
 		Session session = DAOPostgreSQL.startTransaction();
 		try {
 			Person personClear = readCPF(person.getCpf());
-			if (daoPerson.clear(personClear))
-				return true;
-			return false;
+			daoPerson.clear(personClear);
 		} catch (Exception e) {
 			System.out.println("Erro ao salvar" + e);
+			return false;
 		}
 		DAOPostgreSQL.closeTransaction(session);
-		return false;
+		return true;
 	}
 
 	public List<Person> listAll() {
@@ -77,8 +75,12 @@ public class DAOPerson extends DAOGenericImplements<Person> {
 		Session session = DAOPostgreSQL.startTransaction();
 		Person person = null;
 		try {
-			Query consulta = session.createQuery("from Person where cpf like '" + CPF + "'");
-			person = (Person) consulta.getResultList().get(0);
+			Query consult = session.createQuery("from Person where cpf = '" + CPF + "'", Person.class);
+			List<Person> result = (List<Person>)  consult.getResultList();
+			if (!result.isEmpty()) {
+				person = result.get(0);
+				return person;
+			}
 		} catch (Exception err) {
 			System.out.println("erro" + err);
 		}

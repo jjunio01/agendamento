@@ -1,0 +1,21 @@
+
+.formulario{
+    margin-top: 200px;
+    width: 20%;
+    margin: 180px auto;
+}
+
+input{
+    
+    width: 100%;
+    padding: 2px;
+    margin-bottom: 1em;
+    font: 1em sans-serif;
+}
+
+.titulo{
+    width: 20%;
+    margin: 20px auto;
+    margin-left:70px;
+    font-size: 40px;
+}

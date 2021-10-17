@@ -8,6 +8,7 @@ import br.ifpe.edu.agendamento.model.entity.Person;
  *
  */
 public class ModelPerson {
+	
 
 	public static Person readPersonForCPF(String CPF) {
 
@@ -27,7 +28,7 @@ public class ModelPerson {
 
 			Person queryPerson = readPersonForCPF(person.getCpf());
 
-			if (queryPerson != null) {
+			if (queryPerson == null) {
 				DAOPerson daoPerson = new DAOPerson();
 				daoPerson.add(person);
 				return true;

@@ -15,6 +15,6 @@
 		
 		
 		<mapping class="br.ifpe.edu.agendamento.model.entity.Queue"/>
-		
+		<mapping class="br.ifpe.edu.agendamento.model.entity.Person"/>
 	</session-factory>
 </hibernate-configuration>

@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -13,7 +14,9 @@ import javax.persistence.Id;
 
 @Entity
 public class QueueAttendance {
+	
 	@Id
+	@GeneratedValue
 	private int id;
 	private Queue<Attendance> queueAttendances;
 

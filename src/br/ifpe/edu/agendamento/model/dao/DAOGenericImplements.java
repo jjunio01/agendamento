@@ -17,12 +17,12 @@ public class DAOGenericImplements<T> implements DAOGeneric<T> {
 		Session session = DAOPostgreSQL.startTransaction();
 		try {
 			session.save(t);
-			return true;
 		} catch (Exception e) {
 			System.out.println("Erro ao salvar" + e);
+			return false;
 		}
 		DAOPostgreSQL.closeTransaction(session);
-		return false;
+		return true;
 	}
 
 	@Override
@@ -31,12 +31,12 @@ public class DAOGenericImplements<T> implements DAOGeneric<T> {
 		Session session = DAOPostgreSQL.startTransaction();
 		try {
 			session.update(t);
-			return true;
 		} catch (Exception e) {
 			System.out.println("Erro ao atualizar" + e);
+			return false;
 		}
 		DAOPostgreSQL.closeTransaction(session);
-		return false;
+		return true;
 	}
 
 	@Override
@@ -45,12 +45,12 @@ public class DAOGenericImplements<T> implements DAOGeneric<T> {
 		Session session = DAOPostgreSQL.startTransaction();
 		try {
 			session.delete(t);
-			return true;
 		} catch (Exception e) {
 			System.out.println("Erro ao salvar" + e);
+			return false;
 		}
 		DAOPostgreSQL.closeTransaction(session);
-		return false;
+		return true;
 	}
 
 }

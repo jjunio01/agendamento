@@ -14,7 +14,7 @@
     <body>
 
         <div class="formulario">
-            <form action="cadastra" method="post" class="formulario-interno">
+            <form action="cadastrar" method="post" class="formulario-interno">
 
                 <h2 class="titulo">Cadastra</h2>
 

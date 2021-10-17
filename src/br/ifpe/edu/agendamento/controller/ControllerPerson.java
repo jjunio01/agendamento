@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ifpe.edu.agendamento.model.ModelPerson;
-import br.ifpe.edu.agendamento.model.dao.DAOPerson;
 import br.ifpe.edu.agendamento.model.entity.Person;
 
 /**
@@ -41,11 +40,13 @@ public class ControllerPerson extends HttpServlet {
 
 		String mensagemCadastro = "Cadastro realizado com sucesso!";
 
-		if (ModelPerson.createPerson(new Person(cpf, name, phoneNumber, emailEddress)))
+		if (ModelPerson.createPerson(new Person(cpf, name, phoneNumber, emailEddress))) {
 			request.setAttribute("mensagem", mensagemCadastro);
-		request.setAttribute("mensagem", mensagemCadastro);
-		mensagemCadastro = "Falha ao realizar cadastro, tente novamente.";
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/createPerson.jsp");
+		} else {
+			request.setAttribute("mensagem", mensagemCadastro);
+			mensagemCadastro = "Falha ao realizar cadastro, tente novamente.";
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 
 	}

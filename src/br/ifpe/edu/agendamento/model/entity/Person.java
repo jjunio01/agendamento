@@ -18,15 +18,11 @@ import javax.persistence.UniqueConstraint;
  */
 
 @Entity
-@SequenceGenerator(name = "seq_person", sequenceName = "seq_person", initialValue = 1, allocationSize = 1)
 @Table(uniqueConstraints = @UniqueConstraint(name = "phoneNumber", columnNames = {"phoneNumber"}))
 public class Person {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
 	private String cpf;
-	@OneToOne
-	@JoinColumn(name="attendance_name", foreignKey = @ForeignKey(name="fk_attendance"))
 	private String name;
 	@Column(unique = true)
 	private String phoneNumber;
@@ -45,10 +41,6 @@ public class Person {
 
 	public String getCpf() {
 		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 	public String getName() {

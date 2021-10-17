@@ -1,22 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="PT-br">
 <head>
-<link rel="stylesheet" href="css/bananaStyle.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style-index.css">
 
-<meta charset="ISO-8859-1">
-<title>Banana Bacana</title>
+    <title>Menu</title>
 </head>
 <body>
-	<main class="bananaMain">
-		<form action="RealizarCadastro" method="post" class="bananaForm">
-			
-			<div>
-				<input id="bananaButton" type="submit" name="salvar"
-					value="Testar Cadastro">
-			</div>
-		</form>
-	</main>
+
+    <body>
+    
+        <div class="sub-background">
+            <h3 class="welcome">Bem-vindo!</h3>
+            <a href="cadastra.jsp"><button class="cadastra">CADASTRA</button></a>
+            <a href="agendamento.jsp"><button class="agendamento">AGENDAMENTO</button></a>
+        </div>
+       
+    </body>
+
+
+    <footer>
+        <h3 class="copy">© 2012-2021, agendamento.com</h3>
+    </footer>
+    
 </body>
 </html>

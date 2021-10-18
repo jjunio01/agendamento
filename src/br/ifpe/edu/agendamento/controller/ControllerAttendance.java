@@ -16,7 +16,6 @@ import br.ifpe.edu.agendamento.model.entity.Attendance;
 import br.ifpe.edu.agendamento.model.entity.Day;
 import br.ifpe.edu.agendamento.model.entity.Person;
 import br.ifpe.edu.agendamento.model.entity.Service;
-import sun.java2d.d3d.D3DDrawImage;
 
 /**
  * Servlet implementation class ControllerAttendance

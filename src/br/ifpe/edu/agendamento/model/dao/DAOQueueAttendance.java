@@ -1,13 +1,13 @@
 package br.ifpe.edu.agendamento.model.dao;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 import javax.persistence.Query;
 
 import org.hibernate.Session;
 
 import br.ifpe.edu.agendamento.model.entity.Attendance;
+import br.ifpe.edu.agendamento.model.entity.QueueAttendance;
 
 /**
  * @author JJunio
@@ -15,29 +15,39 @@ import br.ifpe.edu.agendamento.model.entity.Attendance;
  */
 public class DAOQueueAttendance {
 
-	public Queue<Attendance> getQueue() {
+	public QueueAttendance getQueue() {
 		DAOPostgreSQL.getInstance();
 		Session session = DAOPostgreSQL.startTransaction();
-		Queue<Attendance> queueAttendances = new LinkedList<Attendance>();
+		List<QueueAttendance> queueAttendances = null;
 		try {
-			Query consulta = session.createQuery("from Attendance");
-			queueAttendances = (LinkedList<Attendance>) consulta.getResultList();
+			Query consulta = session.createQuery("from QueueAttendance");
+			queueAttendances = (List<QueueAttendance>) consulta.getResultList();
+
+			if (!queueAttendances.isEmpty()) {
+				return queueAttendances.get(0);
+			}
 		} catch (Exception err) {
 			System.out.println("erro" + err);
 		}
 		DAOPostgreSQL.closeTransaction(session);
-		return queueAttendances;
+		return null;
 	}
 
 	public boolean add(Attendance attendance) {
 
-		Queue<Attendance> result = getQueue();
-
+		QueueAttendance result = getQueue();
 		DAOPostgreSQL.getInstance();
 		Session session = DAOPostgreSQL.startTransaction();
 		try {
-			result.add(attendance);
-			session.saveOrUpdate(result);
+			if (result == null) {
+				result = new QueueAttendance();
+				result.updateQueueAttendances(attendance);
+				session.save(result);
+			} else {
+				result.updateQueueAttendances(attendance);
+				session.update(result);
+			}
+
 		} catch (Exception e) {
 			System.out.println("Erro ao salvar" + e);
 			return false;

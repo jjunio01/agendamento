@@ -1,11 +1,14 @@
 package br.ifpe.edu.agendamento.model.entity;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,13 +24,9 @@ public class QueueAttendance {
 	private int id;
 	@OneToMany
 	private List<Attendance> queueAttendances;
-	
 
 	public QueueAttendance() {
-	}
-
-	public void setQueueAttendances(LinkedList<Attendance> queueAttendances) {
-		this.queueAttendances = queueAttendances;
+		this.queueAttendances = new ArrayList<>();
 	}
 
 	public int getId() {
@@ -36,6 +35,10 @@ public class QueueAttendance {
 
 	public List<Attendance> getQueueAttendances() {
 		return queueAttendances;
+	}
+
+	public void updateQueueAttendances(Attendance attendance) {
+		this.queueAttendances.add(attendance);
 	}
 
 }

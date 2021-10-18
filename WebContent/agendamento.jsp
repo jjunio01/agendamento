@@ -21,18 +21,18 @@
 
                 <div>
                     <label for="inputcpf">CPF:</label>
-                    <input type="text" id="inputcpf" name="" required>   
-                      
+                    <input type="text" id="inputcpf" name="cpf"
+                     placeholder="Ex:75123055567" required >   
                 </div>
                
                 <div>
                     <label for="inputservico">Serviço:</label>
-                    <input type="text" id="inputservico" name="" required>
+                    <input type="text" id="inputservico" name="servico" required>
                 </div>
 
                 <div>
                     <label for="inputdata">Data:</label>
-                    <input type="datetime-local" id="inputdata" name="" required>
+                    <input type="datetime-local" id="inputdata" name="data" required>
                 </div>
 
                 <div class="botao-formulario"></div>

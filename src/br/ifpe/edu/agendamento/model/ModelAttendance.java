@@ -27,19 +27,13 @@ public class ModelAttendance {
 		DAOAttendance daoAttendance = new DAOAttendance();
 		DAOPerson daoPerson = new DAOPerson();
 		Person person = daoPerson.readCPF(attendance.getPerson().getCpf());
-		attendance.setPerson(person);
-		daoAttendance.add(attendance);
-		if (attendance != null) {
+		
+		if (person != null) {
+			attendance.setPerson(person);
 			daoAttendance.add(attendance);
-			if (attendance.getDay() == null || attendance.getPerson() == null || attendance.getService() == null) {
-				return false;
-			} else {
-				if (ModelPerson.authenticatePerson(attendance.getPerson())) {
-
-				}
-			}
+			return true;
 		}
-
+		
 		return false;
 	}
 

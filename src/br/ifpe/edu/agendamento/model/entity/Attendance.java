@@ -1,7 +1,5 @@
 package br.ifpe.edu.agendamento.model.entity;
 
-import java.beans.Transient;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 
 /**
  * @author Mikaelbr073

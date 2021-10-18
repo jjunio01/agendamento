@@ -1,6 +1,6 @@
 package br.ifpe.edu.agendamento.model.dao;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Query;

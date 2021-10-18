@@ -2,6 +2,8 @@ package br.ifpe.edu.agendamento.controller;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +18,7 @@ import br.ifpe.edu.agendamento.model.ModelQueue;
 import br.ifpe.edu.agendamento.model.entity.Attendance;
 import br.ifpe.edu.agendamento.model.entity.Day;
 import br.ifpe.edu.agendamento.model.entity.Person;
+import br.ifpe.edu.agendamento.model.entity.QueueAttendance;
 import br.ifpe.edu.agendamento.model.entity.Service;
 
 /**
@@ -31,6 +34,11 @@ public class ControllerQueue extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		QueueAttendance queue = ModelQueue.getQueue();
+		List<Attendance> attendances = queue.getQueueAttendances();
+		request.setAttribute( "nome", attendances ); request.getRequestDispatcher( "/listagem.jsp" ).forward( request, response );
+		
 	}
 
 

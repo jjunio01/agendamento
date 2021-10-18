@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style-listagem.css">
+    
     <title>lista de agendamento</title>
 </head>
 <body>
@@ -29,12 +30,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="" items="${}">
+					<c:forEach var="t" items="${teste}">
 							<tr>
-								<td>${}</td>
-								<td>${}</td>
-								<td>${}</td>
-								<td>${}</td>
+								<td>${t}</td>
+								<td>${t}</td>
+								<td>${t}</td>
 								<td><a href="">Editar</a></td>
 								<td><a href="">Remover</a></td>
 							</tr> 

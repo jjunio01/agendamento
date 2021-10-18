@@ -18,7 +18,7 @@
 		<h3 class="welcome">Bem-vindo!</h3>
 		<a href="cadastra.jsp"><button class="cadastra">CADASTRA</button></a>
 		<a href="agendamento.jsp"><button class="agendamento">AGENDAMENTO</button></a>
-		<a href="listagem.jsp"><button class="listar">LISTA DE AGENDAMENTOS</button></a>
+		<a href="agendar"><button class="listar">LISTA DE AGENDAMENTOS</button></a>
 	</div>
 	
 	<div class="mensagem">

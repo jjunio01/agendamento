@@ -1,6 +1,7 @@
 package br.ifpe.edu.agendamento.controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.ifpe.edu.agendamento.model.ModelAttendance;
 import br.ifpe.edu.agendamento.model.ModelPerson;
+import br.ifpe.edu.agendamento.model.entity.Attendance;
+import br.ifpe.edu.agendamento.model.entity.Day;
 import br.ifpe.edu.agendamento.model.entity.Person;
+import br.ifpe.edu.agendamento.model.entity.Service;
 
 /**
  * Servlet implementation class ControllerPerson
@@ -39,8 +44,8 @@ public class ControllerPerson extends HttpServlet {
 		String emailEddress = request.getParameter("emailEddress");
 
 		String mensagemCadastro = "Cadastro realizado com sucesso!";
-
-		if (ModelPerson.createPerson(new Person(cpf, name, phoneNumber, emailEddress))) {
+		Person person = new Person(cpf, name, phoneNumber, emailEddress);
+		if (ModelPerson.createPerson(person)) {
 			request.setAttribute("mensagem", mensagemCadastro);
 		} else {
 			request.setAttribute("mensagem", mensagemCadastro);

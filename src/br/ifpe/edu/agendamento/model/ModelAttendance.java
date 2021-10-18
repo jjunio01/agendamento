@@ -1,10 +1,12 @@
 package br.ifpe.edu.agendamento.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import br.ifpe.edu.agendamento.model.dao.DAOAttendance;
+import br.ifpe.edu.agendamento.model.dao.DAOPerson;
 import br.ifpe.edu.agendamento.model.entity.Attendance;
+import br.ifpe.edu.agendamento.model.entity.Person;
 
 /**
  * @author JJunio
@@ -23,9 +25,12 @@ public class ModelAttendance {
 	public static boolean createAttendance(Attendance attendance) {
 
 		DAOAttendance daoAttendance = new DAOAttendance();
-
+		DAOPerson daoPerson = new DAOPerson();
+		Person person = daoPerson.readCPF(attendance.getPerson().getCpf());
+		attendance.setPerson(person);
+		daoAttendance.add(attendance);
 		if (attendance != null) {
-
+			daoAttendance.add(attendance);
 			if (attendance.getDay() == null || attendance.getPerson() == null || attendance.getService() == null) {
 				return false;
 			} else {

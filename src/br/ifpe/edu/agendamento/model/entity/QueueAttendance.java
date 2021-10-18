@@ -1,11 +1,12 @@
 package br.ifpe.edu.agendamento.model.entity;
 
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author Mikaelbr073
@@ -14,21 +15,26 @@ import javax.persistence.Id;
 
 @Entity
 public class QueueAttendance {
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
-	private Queue<Attendance> queueAttendances;
+	@OneToMany
+	private List<Attendance> queueAttendances;
+	
 
 	public QueueAttendance() {
-		this.queueAttendances = new LinkedList<Attendance>();
+	}
+
+	public void setQueueAttendances(LinkedList<Attendance> queueAttendances) {
+		this.queueAttendances = queueAttendances;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public Queue<Attendance> getQueueAttendances() {
+	public List<Attendance> getQueueAttendances() {
 		return queueAttendances;
 	}
 

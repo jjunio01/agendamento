@@ -23,4 +23,24 @@
 		<url-pattern>/cadastrar</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>agendar</servlet-name>
+		<servlet-class>br.ifpe.edu.agendamento.controller.ControllerQueue</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>agendar</servlet-name>
+		<url-pattern>/agendar</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>atendimento</servlet-name>
+		<servlet-class>br.ifpe.edu.agendamento.controller.ControllerAttendance</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>atendimento</servlet-name>
+		<url-pattern>/atendimento</url-pattern>
+	</servlet-mapping>
+
 </web-app>

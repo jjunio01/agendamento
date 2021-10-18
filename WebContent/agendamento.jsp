@@ -15,7 +15,7 @@
     <body>
         <div class="formulario">
 
-            <form action="cadastra" method="post" class="formulario-interno">
+            <form action="agendar" method="post" class="formulario-interno">
 
                 <h2 class="titulo-agendamento">Agendamento</h2>
 

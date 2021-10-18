@@ -1,9 +1,10 @@
 package br.ifpe.edu.agendamento.model;
 
-import java.util.Queue;
+import java.util.List;
 
 import br.ifpe.edu.agendamento.model.dao.DAOQueueAttendance;
 import br.ifpe.edu.agendamento.model.entity.Attendance;
+import br.ifpe.edu.agendamento.model.entity.QueueAttendance;
 
 /**
  * @author JJunio
@@ -22,7 +23,7 @@ public class ModelQueue {
 		return false;
 	}
 
-	public static Queue<Attendance> getQueue() {
+	public static QueueAttendance getQueue() {
 		return new DAOQueueAttendance().getQueue();
 	}
 }

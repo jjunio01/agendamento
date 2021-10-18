@@ -1,5 +1,6 @@
 package br.ifpe.edu.agendamento.model.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -19,7 +20,7 @@ public class Attendance {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.PERSIST)
 	private Person person;
 	
 	@Embedded

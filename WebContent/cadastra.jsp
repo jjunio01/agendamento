@@ -20,24 +20,28 @@
 
                 <div>
                     <label for="inputNome">Nome Completo:</label>
-                    <input type="text" id="inputNome" name="name" required >   
+                    <input type="text" id="inputNome" name="name"
+                    placeholder="Ex:Mikael Crvalho" required >   
                       
                 </div>
                
                 <div>
                     <label for="inputcpf">CPF:</label>
-                    <input type="text" id="inputcpf" name="cpf" required>
+                    <input type="text" id="inputcpf" name="cpf" 
+                     placeholder="Ex:75123055567" required>
                 </div>
 
                 <div>
                     <label for="inputcelular">Celular:</label>
-                    <input type="number" id="inputcelular" name="phoneNumber" required>
+                    <input type="number" id="inputcelular" name="phoneNumber" 
+                    placeholder="Ex:87996771179" required>
                     
                 </div>
 
                 <div>
                     <label for="inputemail">e-mail:</label>
-                    <input type="email" id="inputemail" name="emailEddress">
+                    <input type="email" id="inputemail" 
+                     placeholder="pedrolucas@emial.com"  name="emailEddress">
                    
                 </div>
 

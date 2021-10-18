@@ -47,10 +47,6 @@ public class ControllerPerson extends HttpServlet {
 		Person person = new Person(cpf, name, phoneNumber, emailEddress);
 		if (ModelPerson.createPerson(person)) {
 			request.setAttribute("mensagem", mensagemCadastro);
-			ModelAttendance.createAttendance(
-					new Attendance(
-							person, 
-							new Day(new Date(), new Date()), Service.CARDIOLOGIA));
 		} else {
 			request.setAttribute("mensagem", mensagemCadastro);
 			mensagemCadastro = "Falha ao realizar cadastro, tente novamente.";

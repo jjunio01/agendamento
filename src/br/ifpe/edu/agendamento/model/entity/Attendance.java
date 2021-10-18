@@ -53,6 +53,10 @@ public class Attendance {
 	public Service getService() {
 		return service;
 	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 	
 	
 	

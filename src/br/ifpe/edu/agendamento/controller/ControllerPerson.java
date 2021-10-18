@@ -43,13 +43,13 @@ public class ControllerPerson extends HttpServlet {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String emailEddress = request.getParameter("emailEddress");
 
-		String mensagemCadastro = "Cadastro realizado com sucesso!";
+		String mensagem = "Cadastro realizado com sucesso!";
 		Person person = new Person(cpf, name, phoneNumber, emailEddress);
 		if (ModelPerson.createPerson(person)) {
-			request.setAttribute("mensagem", mensagemCadastro);
+			request.setAttribute("mensagem", mensagem);
 		} else {
-			request.setAttribute("mensagem", mensagemCadastro);
-			mensagemCadastro = "Falha ao realizar cadastro, tente novamente.";
+			request.setAttribute("mensagem", mensagem);
+			mensagem = "Falha ao realizar cadastro, tente novamente.";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);

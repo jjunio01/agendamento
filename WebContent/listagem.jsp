@@ -37,7 +37,6 @@
 								<td>${}</td>
 								<td><a href="">Editar</a></td>
 								<td><a href="">Remover</a></td>
-						
 							</tr> 
 					</c:forEach>
 				</tbody>
